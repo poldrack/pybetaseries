@@ -8,8 +8,8 @@ spm_hrf: helper function to generate double-gamma HRF
 """
 
 #from mvpa.misc.fsl.base import *
-from mvpa.misc.fsl.base import *
-from mvpa.datasets.mri import fmri_dataset
+from mvpa2.misc.fsl.base import *
+from mvpa2.datasets.mri import fmri_dataset
 
 import numpy as N
 import nibabel
@@ -121,7 +121,7 @@ def pybetaseries(fsfdir,method=['lsall','lsone'],time_res=0.1):
 
     for ev in range(design['fmri(evs_orig)']):
         # filter out motion parameters
-        if design['fmri(evtitle%d)'%int(ev+1)].find('motpar')<0:
+        if design['fmri(evtitle%d)'%int(ev+1)].find('mot')!=0:
             good_evs.append(evctr)
             evctr+=1
             if design['fmri(deriv_yn%d)'%int(ev+1)]==1:
